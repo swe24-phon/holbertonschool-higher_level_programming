@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 def to_uppercase(ch):
     if ord(ch) >= 97 and ord(ch) <= 122:
