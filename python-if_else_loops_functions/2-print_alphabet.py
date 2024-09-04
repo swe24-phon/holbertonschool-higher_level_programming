@@ -1,4 +1,3 @@
 #!/usr/bin/python3
-asciitext = "abcdefghijklmnopqrstuvwxyz"
-for i in asciitext:
-    print(i, end="")
+for i in range(26):
+    print("{:c}".format(97 + i), end='')
