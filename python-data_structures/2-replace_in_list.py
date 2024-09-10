@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+
 def replace_in_list(my_list, idx, element):
     """
     Replace the element at the specified index in the list.
@@ -10,8 +11,10 @@ def replace_in_list(my_list, idx, element):
     element: The new element to insert
 
     Returns:
-    list: The modified list if the index is within range, otherwise the original list
+    list: The modified list if the index is within range,
+    otherwise the original list
     """
+
     if 0 <= idx < len(my_list):
         my_list[idx] = element
     return my_list
