@@ -3,7 +3,7 @@
 def print_reversed_list_integer(my_list=[]):
     """
     Prints all integers in the list, in reverse order.
-    
+
     Parameters:
     my_list (list): The list to modify
 
