@@ -10,7 +10,7 @@ def max_integer(my_list=[]):
     if not my_list:
         return None
     else:
-        max_num = 0
+        max_num = my_list[0]
         for current_num in my_list:
             if current_num > max_num:
                 max_num = current_num
