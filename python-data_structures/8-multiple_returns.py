@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 def multiple_returns(sentence):
     """
-    This function takes a sentence as input and returns a tuple containing the number of vowels and consonants
+    This function takes a sentence as input and returns a tuple\
+          containing the number of vowels and consonants
     in the sentence.
 
     parameter:
