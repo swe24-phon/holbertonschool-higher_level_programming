@@ -8,4 +8,8 @@ def no_c(my_string):
           return:
           str: the string with all 'c' and 'C' characters removed
     """
-    return my_string.replace('c', '').replace('C', '')
+    result = ""
+    for char in my_string:
+        if char != 'c' and char != 'C':
+            result += char
+    return result
