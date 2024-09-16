@@ -4,10 +4,8 @@ def safe_print_integer(value):
     """
     Prints an integer with "{:d}".format() and returns True if\
         successful.
-
-    Args:
+    parameters:
         value (any): The value to be printed as an integer.
-
     Returns:
         bool: True if value is an integer and printed successfully,\
             False otherwise.
