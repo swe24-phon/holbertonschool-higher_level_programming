@@ -26,4 +26,4 @@ def list_division(my_list_1, my_list_2, list_length):
             if i == list_length - 1:
                 return result
     return result
-        
+
