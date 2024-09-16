@@ -8,14 +8,14 @@ def best_score(a_dictionary):
     return:
     None
     """
-    if a_dictionary is None:
+    if a_dictionary is None or len(a_dictionary) == 0:
         return None
     elif not a_dictionary:
         return None
     else:
-        best_score = none
+        best_score = None
         for key in a_dictionary:
-            if best_score < a_dictionary[key]:
+            if best_score < a_dictionary[key] or best_score is None:
                 best_score = a_dictionary[key]
     return best_score
     
