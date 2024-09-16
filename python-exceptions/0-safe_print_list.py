@@ -12,6 +12,7 @@ def i_count(lst):
         count += 1
     return count
 
+
 def safe_print_list(my_list=[], x=0):
     """
     This function prints a list of elements, but only if the list\
@@ -31,5 +32,6 @@ def safe_print_list(my_list=[], x=0):
             count += 1
         print()
         return count
-    except:
+    except IndexError:
         return count
+    
