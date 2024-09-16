@@ -2,20 +2,19 @@
 
 def best_score(a_dictionary):
     """
-    Returns the best score if it exists in the dictionary, otherwise None
-    parameters:
+    Returns the key with the best score if it exists in the dictionary, otherwise None
+    Parameters:
     a_dictionary (dict): The dictionary to be printed.
-    return:
-    None
+    Returns:
+    The key with the best score in the dictionary, or None if the dictionary is empty.
     """
     if a_dictionary is None or len(a_dictionary) == 0:
         return None
-    elif not a_dictionary:
-        return None
     else:
         best_score = None
-        for key in a_dictionary:
-            if best_score < a_dictionary[key] or best_score is None:
-                best_score = a_dictionary[key]
-    return best_score
-    
+        best_key = None
+        for key, value in a_dictionary.items():
+            if best_score is None or value > best_score:
+                best_score = value
+                best_key = key
+        return best_key
