@@ -15,7 +15,7 @@ def best_score(a_dictionary):
     else:
         best_score = none
         for key in a_dictionary:
-            if best_score < a_dictionary[key] or best_score is None:
+            if best_score < a_dictionary[key]:
                 best_score = a_dictionary[key]
-        return best_score]
+    return best_score
     
