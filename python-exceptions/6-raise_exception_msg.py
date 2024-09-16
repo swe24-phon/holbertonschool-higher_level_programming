@@ -5,4 +5,4 @@ def raise_exception_msg(message=""):
     parameters:
     message (str): The message to be displayed in the exception.
     """
-    raise Exception(message)
+    raise NameError(message)
