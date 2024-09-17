@@ -10,11 +10,12 @@ Method area returns size of area of the square.
 Method my_print prints the square using "#".
 """
 
+
 class Square:
     """
     define class for Square
     """
-    
+
     def __init__(self, size=0, position=(0, 0)):
         if type(size) is not int:
             raise TypeError("size must be an integer")
@@ -23,7 +24,7 @@ class Square:
         self.__size = size
         if type(position) is not tuple or len(position) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
-        if not(isinstance(position[0], int) and\
+        if not(isinstance(position[0], int) and
                isinstance(position[1], int)):
             raise TypeError("position must be a tuple of 2 positive integers")
         if position[0] < 0 or position[1] < 0:
