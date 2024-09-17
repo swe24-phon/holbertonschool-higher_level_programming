@@ -8,6 +8,7 @@ Size defaults to 0. Raise errors on invalid inputs.
 Methods Getter and Setter properties for size.
 Method area returns size of area of the square.
 Method my_print prints the square using "#".
+printing at position
 """
 
 
