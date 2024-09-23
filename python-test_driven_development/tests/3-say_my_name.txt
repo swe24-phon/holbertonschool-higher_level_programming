@@ -35,4 +35,10 @@ First import ``say_my_name`` from the ``3-say_my_name`` file:
     Traceback (most recent call last):
     ...
     TypeError: first_name must be a string
+
+    >>> say_name()
+    Traceback (most recent call last):
+    ...
+    TypeError: say_my_name() missing 1 required positional argument:\
+        'first_name'
     
