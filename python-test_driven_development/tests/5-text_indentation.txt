@@ -37,4 +37,8 @@ First import ``text_indentation`` from the ``5-text_indentation`` file:
     Hello, World!
     
     How are you?
+
+    >>> text_indentation(“Holberton.School”)
+    Holberton.
+    School
     
