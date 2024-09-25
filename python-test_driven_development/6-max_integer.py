@@ -6,7 +6,7 @@ finding the max integer in a list
 """
 
 
-def max_integer():
+def max_integer(lst):
     """
     Returns the maximum integer in the input list.
 
