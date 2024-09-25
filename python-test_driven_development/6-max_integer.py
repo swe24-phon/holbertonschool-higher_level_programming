@@ -20,11 +20,12 @@ def max_integer(lst):
         ValueError: If the input list is empty.
         TypeError: If the input list contains non-integer elements.
     """
-    if not lst:
-        raise ValueError("Input list is empty")
-
-    for element in lst:
-        if not isinstance(element, int):
-            raise TypeError("Input list contains non-integer elements")
-
-    return max(lst)
+    if len(list) == 0:
+        return None
+    result = list[0]
+    i = 1
+    while i < len(list):
+        if list[i] > result:
+            result = list[i]
+        i += 1
+    return result
