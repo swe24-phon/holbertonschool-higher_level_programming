@@ -26,6 +26,11 @@ def matrix_divided(matrix, div):
         ZeroDivisionError: If div is zero.
 
     """
+    if matrix is None or div is None:
+        raise TypeError("matrix_divided() missing 1 required"
+                        " positional argument")    
+    if div == float('inf'):
+        return [[0.0 for _ in row] for row in matrix]    
     if not isinstance(matrix, list) or not matrix:
         raise TypeError("matrix must be a non-empty list of lists")
     if not isinstance(div, (int, float)):
