@@ -25,6 +25,6 @@ def text_indentation(text):
     sentences = text.split("\n\n")
     for sentence in sentences:
         if sentence:
-            print(sentence.strip())
+            print(sentence.strip(), end="")
             print()
         
