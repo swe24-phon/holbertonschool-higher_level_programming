@@ -26,7 +26,6 @@ def matrix_divided(matrix=None, div=None):
         ZeroDivisionError: If div is zero.
 
     """
-
     if matrix is None or div is None:
         if matrix is None and div is None:
             raise TypeError("matrix_divided() missing 2 required"
@@ -51,6 +50,6 @@ def matrix_divided(matrix=None, div=None):
         raise TypeError("Each row of the matrix must have the same size")
     if div == 0:
         raise ZeroDivisionError("division by zero")
-    new_matrix = [[round(float(elem) / div, 2) if elem != 0 else elem for\
-                   elem in row] for row in matrix]
+    new_matrix = [[round(float(elem) / div, 2) for elem in row] for row\
+                  in matrix]
     return new_matrix
