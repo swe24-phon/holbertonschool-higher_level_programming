@@ -1,5 +1,3 @@
-from 2-matrix_divided import matrix_divided
-
 The ``matrix_divided`` module
 
 Using ``matrix_divided``
