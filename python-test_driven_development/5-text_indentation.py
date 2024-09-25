@@ -20,8 +20,21 @@ def text_indentation(text):
     """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
-    for char in text:
-        print(char, end='')
-        if char in ['.', '?', ':']:
-            print('\n\n', end='')
+    sentences = text.split('?')
+    new_text = ''
+    for sentence in sentences:
+        subsentences = sentence.split('.')
+        for subsentence in subsentences:
+            subsentence = subsentence.strip()
+            if subsentence:
+                new_text += subsentence + '.\n\n'
+        new_text = new_text.rstrip('\n')
+        new_text += '?\n\n'
+    sentences = new_text.split(':')
+    new_text = ''
+    for sentence in sentences:
+        sentence = sentence.strip()
+        if sentence:
+            new_text += sentence + ':\n\n'
+    print(new_text.rstrip())
         
