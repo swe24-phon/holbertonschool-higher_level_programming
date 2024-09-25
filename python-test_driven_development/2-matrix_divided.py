@@ -27,16 +27,15 @@ def matrix_divided(matrix=None, div=None):
 
     """
 
-    if matrix is None or div is None:
-        if matrix is None and div is None:
-            raise TypeError("matrix_divided() missing 2 required "
-                            "positional arguments: 'matrix' and 'div'")
-        elif matrix is None:
-            raise TypeError("matrix_divided() missing 1 required "
-                            "positional argument: 'matrix'")
-        else:
-            raise TypeError("matrix_divided() missing 1 required "
-                            "positional argument: 'div'")
+    if matrix is None and div is None:
+        raise TypeError("matrix_divided() missing 2 required positional "
+                        "arguments: 'matrix' and 'div'")
+    if matrix is None:
+        raise TypeError("matrix_divided() missing 1 required positional "
+                        "argument: 'matrix'")
+    if div is None:
+        raise TypeError("matrix_divided() missing 1 required positional "
+                        "argument: 'div'")
 
     if (not isinstance(matrix, list) or not matrix or
             not all(isinstance(row, list) for row in matrix)):
@@ -57,7 +56,5 @@ def matrix_divided(matrix=None, div=None):
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
-    if div in (float('inf'), float('-inf')):
-        return [[0.0 for _ in row] for row in matrix]
-
-    return [[round(elem / div, 2) for elem in row] for row in matrix]
+    return [[0.0 if div == float('inf') else round(elem / div, 2)
+             for elem in row] for row in matrix]
