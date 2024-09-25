@@ -26,7 +26,8 @@ def matrix_divided(matrix, div):
         ZeroDivisionError: If div is zero.
 
     """
-
+    if not isinstance(matrix, list) or not matrix:
+        raise TypeError("matrix must be a non-empty list of lists")
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
     if not all(isinstance(row, list) for row in matrix):
