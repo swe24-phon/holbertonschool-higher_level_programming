@@ -18,10 +18,8 @@ def text_indentation(text):
         TypeError: if text is not a string
 
     """
-    for i, char in enumerate(text):
+    for char in text:
         print(char, end='')
         if char in ['.', '?', ':']:
-            print('\n', end='')
-            if i < len(text) - 1 and text[i+1] == ' ':
-                next(iter(text[i+1:]), '')
+            print('\n\n', end='')
         
