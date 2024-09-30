@@ -6,10 +6,13 @@ This module contains a class Mylist that inherits from list
 
 class Mylist(list):
     """
-    This class inherits from list
-    Parameters:
-    self: the list of integers    
+    This class inherits from list    
     """
     def print_sorted(self):
-        """This method prints the sorted list"""
+        """
+        This method prints the sorted list
+        Parameters:
+        self: the list of integers        
+        """
+
         print(sorted(self))
