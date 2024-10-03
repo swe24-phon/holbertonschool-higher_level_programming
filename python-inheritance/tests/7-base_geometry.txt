@@ -7,11 +7,12 @@ Using ``BaseGeometry``
 First import ``BaseGeometry`` from the ``7-base_geometry`` file:
 
     >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
-    >>> base = BaseGeometry()
-    >>> base.area()
+    >>> a = BaseGeometry()
+    >>> a.area()
     Traceback (most recent call last):
     ...
-    AttributeError: 'BaseGeometry' object has no attribute 'area'
+    Exception: area() is not implemented
+
     >>> a.integer_validator("width", 0)
     Traceback (most recent call last):
     ValueError: width must be greater than 0
@@ -19,7 +20,7 @@ First import ``BaseGeometry`` from the ``7-base_geometry`` file:
     >>> a.integer_validator("width", -2)
     Traceback (most recent call last):
     ValueError: width must be greater than 0
-    
+
     >>> a.integer_validator()
     Traceback (most recent call last):
     TypeError: integer_validator() missing 2 required positional arguments:\
@@ -58,4 +59,22 @@ First import ``BaseGeometry`` from the ``7-base_geometry`` file:
     Traceback (most recent call last):
     TypeError: age must be an integer
 
+    >>> a.integer_validator("width", 0)
+    Traceback (most recent call last):
+        ...
+    ValueError: width must be greater than 0
 
+    >>> a.integer_validator("width", -2)
+    Traceback (most recent call last):
+        ...
+    ValueError: width must be greater than 0
+
+    >>> a.integer_validator("width")
+    Traceback (most recent call last):
+        ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+    >>> a.integer_validator("width", "a")
+    Traceback (most recent call last):
+        ...
+    TypeError: width must be an integer
