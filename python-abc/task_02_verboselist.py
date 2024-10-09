@@ -5,6 +5,7 @@ This Python code demonstrates the concept of inheritance
 to define a derived classes 'VerboseList'.
 """
 
+
 class VerboseList(list):
     """
     Extend list in-built class
