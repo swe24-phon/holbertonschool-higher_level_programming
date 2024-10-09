@@ -37,4 +37,4 @@ class Cat(Animal):
     """
 
     def sound(self):
-        return "Bark"
+        return "Meow"
