@@ -23,10 +23,10 @@ class Shape(ABC):
      method `area()` and 'perimeter()' in sub classes
     """
 
-    @abc.abstractmethod
+    @abstractmethod
     def area(self):
         pass
-    @abc.abstractmethod
+    @abstractmethod
     def perimeter(self):
         pass
 
