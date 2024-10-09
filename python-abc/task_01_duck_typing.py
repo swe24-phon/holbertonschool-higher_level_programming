@@ -32,7 +32,7 @@ class Shape(ABC):
 
 class Circle(Shape):
     def __init__(self, radius):
-        self.radius = radius
+        self.radius = abs(radius)
 
     def area(self):
         return math.pi * self.radius * self.radius
@@ -42,8 +42,8 @@ class Circle(Shape):
     
 class Rectangle(Shape):
     def __init__(self, width, height):
-        self.height = height
-        self.width = width
+        self.height = abs(height)
+        self.width = abs(width)
     def area(self):
         return self.height * self.width
     def perimeter(self):
