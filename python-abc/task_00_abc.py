@@ -11,10 +11,10 @@ from abc import ABC, abstractmethod
 
 
 class Animal(ABC):
-        """
-        sound method is abstract and must be implemented by derived classes.
-        It defines the expected behavior of making an animal sound.
-        """
+    """
+    sound method is abstract and must be implemented by derived classes.
+    It defines the expected behavior of making an animal sound.
+    """
     def __init__(self):
         pass
 
@@ -32,11 +32,11 @@ class Dog(Animal):
         self.name = name
 
     def sound(self):
-        print("bark")
+        print("Bark")
 
 
 class Cat(Animal):
-        """
+    """
     class cat extended from animal class
     must include sound
     """
