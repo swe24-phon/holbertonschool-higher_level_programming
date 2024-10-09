@@ -12,7 +12,7 @@ from abc import ABC, abstractmethod
 
 """
 
-class VerboseList(List):
+class VerboseList(list):
     @abstractmethod
     def append(self, item):
         super.append()
