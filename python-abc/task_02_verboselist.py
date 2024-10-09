@@ -6,15 +6,18 @@ to define a derived classes 'VerboseList'.
 """
 
 class VerboseList(list):
+    """
+    Extend list in-built class
+    """
 
     def append(self, item):
-        super.append()
+        super().append(item)
         print(f"Added [{item}] to the list.")
 
 
     def extend(self, iterable):
-        super().extend(items)
-        print(f"Extended the list with [{len(items)}] items.")
+        super().extend(iterable)
+        print(f"Extended the list with [{len(iterable)}] items.")
 
 
     def remove(self, item):
