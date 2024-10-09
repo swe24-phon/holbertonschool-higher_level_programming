@@ -15,9 +15,6 @@ class Animal(ABC):
     sound method is abstract and must be implemented by derived classes.
     It defines the expected behavior of making an animal sound.
     """
-    def __init__(self):
-        pass
-
     @abstractmethod
     def sound(self):
         pass
@@ -28,8 +25,6 @@ class Dog(Animal):
     class Dog extended from animal class
     must include sound
     """
-    def __init__(self, name):
-        self.name = name
 
     def sound(self):
         return "Bark"
@@ -40,8 +35,6 @@ class Cat(Animal):
     class cat extended from animal class
     must include sound
     """
-    def __init__(self, name):
-        self.name = name
 
     def sound(self):
         return "Bark"
