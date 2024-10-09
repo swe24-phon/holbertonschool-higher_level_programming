@@ -32,7 +32,7 @@ class Dog(Animal):
         self.name = name
 
     def sound(self):
-        print("Bark")
+        return "Bark"
 
 
 class Cat(Animal):
@@ -44,4 +44,4 @@ class Cat(Animal):
         self.name = name
 
     def sound(self):
-        print("Meow")
+        return "Bark"
