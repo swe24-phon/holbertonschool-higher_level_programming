@@ -8,5 +8,4 @@ def write_file(filename="", text=""):
     """ write the file and print out its length """
 
     with open(filename, 'w', encoding='utf-8') as file:
-        length = file.write(text)
-        return length
+        return len(file.write(text))
