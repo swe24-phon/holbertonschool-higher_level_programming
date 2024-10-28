@@ -68,3 +68,13 @@ dump and load are used for reading from and writing to files directly.
 
 Use dumps and loads when you want to work with JSON data as strings, and use dump and load when you want to work with files.
 
+==========
+
+list.extend is faster than for loop
+
+    for arg in sys.argv[1:]:
+        my_list.append(arg)
+    save_to_json_file(my_list, filename)
+
+    my_list.extend(sys.argv[1:])
+    save_to_json_file(my_list, filename)
