@@ -1,0 +1,24 @@
+All your tests should be executed by using this command: python3 -m doctest ./tests/*
+All your modules should have a documentation (python3 -c 'print(__import__("my_module").__doc__)')
+All your functions should have a documentation (python3 -c 'print(__import__("my_module").my_function.__doc__)')
+
+Test cases
+empty list
+
+
+list with one element (any type)
+
+
+list with 2 different element (same type)
+
+
+list with twice the same element (same type)
+
+
+list with more than 2 times the same element (same type)
+
+
+list with multiple types (integer, string, etc…)
+
+
+not a list argument (ex: passing a dictionary to the method)
