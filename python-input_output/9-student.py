@@ -5,8 +5,6 @@ make it serialisable
 """
 
 
-import json
-
 
 class Student:
     """ class Student """
