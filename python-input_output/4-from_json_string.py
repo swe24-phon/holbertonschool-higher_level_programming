@@ -6,5 +6,5 @@ import json
 
 
 def from_json_string(my_str):
-    """Convert an JSON to python dictionary"""
+    """Convert an JSON to python dictionary """
     return json.loads(my_str)
