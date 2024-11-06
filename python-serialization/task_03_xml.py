@@ -53,6 +53,16 @@ def deserialize_from_xml(filename):
 
             if value.isdigit():
                 value = int(value)
+            elif '.' in value:
+                try:
+                    value = float(value)
+                except ValueError:
+                    pass
+            elif value.lower() == 'true':
+                value = True
+            elif value.lower() == 'false':
+                value = False
+                
             else:
                 try:
                     value = float(value)
