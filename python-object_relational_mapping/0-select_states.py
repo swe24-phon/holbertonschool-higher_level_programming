@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 import MySQLdb
-"""
-Fetching all rows from the states table in the database hbtn_0e_0_usa
-"""
 
+"""
+This module fetches all rows from the states table in the database hbtn_0e_0_usa.
+"""
 
 if __name__ == "__main__":
     """Verify that the module is being run directly"""
