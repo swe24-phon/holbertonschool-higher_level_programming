@@ -15,6 +15,7 @@ class StateFetcher:
         """
         Initializes the database connection.
         """
+
         self.conn = MySQLdb.connect(host=host, user=user, passwd=password, db=db, charset="utf8")
         self.cur = self.conn.cursor()
 
@@ -22,19 +23,23 @@ class StateFetcher:
         """
         Fetches all states from the states table.
         """
-        self.cur.execute("SELECT * FROM `states` ORDER BY `id` ASC")
+
+        self.cur.execute("SELECT * FROM states ORDER BY id ASC")
         return self.cur.fetchall()
 
     def close(self):
         """
-        
         Closes the database connection.
         """
+
         self.cur.close()
         self.conn.close()
 
 if __name__ == "__main__":
-    """Verify that the module is being run directly"""
+    """
+    Verify that the module is being run directly
+    """
+
     fetcher = StateFetcher("localhost", "root", "root", "hbtn_0e_0_usa")
     states = fetcher.fetch_states()
     for state in states:
