@@ -2,6 +2,7 @@
 import MySQLdb
 
 """
+
 This module fetches all rows from the states table in the database hbtn_0e_0_usa.
 """
 
