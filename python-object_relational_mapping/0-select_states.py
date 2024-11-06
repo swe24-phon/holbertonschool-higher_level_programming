@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import MySQLdb
 """Fetching all rows from the states table in the database hbtn_0e_0_usa"""
 
