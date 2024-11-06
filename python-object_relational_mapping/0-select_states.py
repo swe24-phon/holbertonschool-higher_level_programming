@@ -27,6 +27,7 @@ class StateFetcher:
 
     def close(self):
         """
+        
         Closes the database connection.
         """
         self.cur.close()
