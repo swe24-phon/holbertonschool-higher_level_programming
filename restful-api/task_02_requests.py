@@ -9,7 +9,7 @@ def fetch_and_print_posts():
 
     api_url = "https://jsonplaceholder.typicode.com/posts"
     response = requests.get(api_url, timeout=10)
-    print("Status Code: ", response.status_code)
+    print("Status Code:", response.status_code)
     posts = response.json()
         
     for post in posts:
