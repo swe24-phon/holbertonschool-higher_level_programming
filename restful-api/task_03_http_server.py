@@ -26,7 +26,7 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-Type', 'text/plain')
             self.end_headers()
-            self.wfile.write(b'ok')  # Example response    # Convert dict to JSON and encode to bytes
+            self.wfile.write(b'OK')  # Example response    # Convert dict to JSON and encode to bytes
         elif self.path == '/info':
             # Info endpoint
             info_data = {
