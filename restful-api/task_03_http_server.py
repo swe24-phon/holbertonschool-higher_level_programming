@@ -2,7 +2,7 @@
 import http.server
 import json
 
-PORT = 8005
+PORT = 8000
 
 
 class MyHandler(http.server.BaseHTTPRequestHandler):
