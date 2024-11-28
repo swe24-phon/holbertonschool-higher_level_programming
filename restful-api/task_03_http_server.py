@@ -26,7 +26,17 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-Type', 'application/json')
             self.end_headers()
-            self.wfile.write(b'{"status": "ok"}')  # Example response    # Convert dict to JSON and encode to bytes
+            self.wfile.write(b'{"ok"}')  # Example response    # Convert dict to JSON and encode to bytes
+        elif self.path == '/info':
+            # Info endpoint
+            info_data = {
+                "version": "1.0",
+                "description": "A simple API built with http.server"
+            }
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(json.dumps(info_data).encode('utf-8'))
         elif self.path == '/':
             # Handle the root path
             self.send_response(200)  # HTTP status code 200 (OK)
