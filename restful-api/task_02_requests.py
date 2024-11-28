@@ -30,10 +30,10 @@ def fetch_and_save_posts():
     posts = response.json()
     diclist = []
     for post in posts:
-        diclist.append({"userId": post["userId"], "title": post["title"], "body": post["body"]})
+        diclist.append({"id": post["userId"], "title": post["title"], "body": post["body"]})
         print(post["title"])
     with open("posts.csv", "w", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=["userId", "title", "body"])
+        writer = csv.DictWriter(file, fieldnames=["id", "title", "body"])
         writer.writeheader()
         for dic in diclist:
             writer.writerow(dic)
