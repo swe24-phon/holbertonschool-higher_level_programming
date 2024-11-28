@@ -6,7 +6,7 @@ PORT = 8005
 
 
 class MyHandler(http.server.BaseHTTPRequestHandler):
-    """ Custom handler class """
+    """ Custom request handler """
     def do_GET(self):
         """ Handle GET requests """
         if self.path == '/data':
@@ -22,6 +22,12 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             self.end_headers()  # End headers
             # Write the JSON data as a response
             self.wfile.write(json.dumps(sample_data).encode('utf-8'))  # Convert dict to JSON and encode to bytes
+        elif self.path == '/':
+            # Handle the root path
+            self.send_response(200)  # HTTP status code 200 (OK)
+            self.send_header('Content-Type', 'text/plain')  # Set content type to plain text
+            self.end_headers()  # End headers
+            self.wfile.write(b'Welcome to the server! Access /data for sample JSON data.')  # Write welcome message
         else:
             # Handle other paths
             self.send_response(404)  # HTTP status code 404 (Not Found)
