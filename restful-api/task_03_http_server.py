@@ -24,9 +24,9 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(json.dumps(sample_data).encode('utf-8'))
         elif self.path == '/status':
             self.send_response(200)
-            self.send_header('Content-Type', 'application/json')
+            self.send_header('Content-Type', 'text/plain')
             self.end_headers()
-            self.wfile.write(b'{"ok"}')  # Example response    # Convert dict to JSON and encode to bytes
+            self.wfile.write(b'ok')  # Example response    # Convert dict to JSON and encode to bytes
         elif self.path == '/info':
             # Info endpoint
             info_data = {
@@ -46,8 +46,9 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
         else:
             # Handle other paths
             self.send_response(404)  # HTTP status code 404 (Not Found)
+            self.send_header('Content-Type', 'text/plain')
             self.end_headers()  # End headers
-            self.wfile.write(b'{"Endpoint not found"}')  # Write error message
+            self.wfile.write(b'Endpoint not found')  # Write error message
 
 if __name__ == "__main__":
     # Create an HTTP server instance
