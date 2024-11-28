@@ -21,18 +21,23 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             self.send_header('Content-Type', 'application/json')  # Set content type to JSON
             self.end_headers()  # End headers
             # Write the JSON data as a response
-            self.wfile.write(json.dumps(sample_data).encode('utf-8'))  # Convert dict to JSON and encode to bytes
+            self.wfile.write(json.dumps(sample_data).encode('utf-8'))
+        elif self.path == '/status':
+            self.send_response(200)
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(b'{"status": "ok"}')  # Example response    # Convert dict to JSON and encode to bytes
         elif self.path == '/':
             # Handle the root path
             self.send_response(200)  # HTTP status code 200 (OK)
             self.send_header('Content-Type', 'text/plain')  # Set content type to plain text
             self.end_headers()  # End headers
-            self.wfile.write(b'Welcome to the server! Access /data for sample JSON data.')  # Write welcome message
+            self.wfile.write(b'Hello, this is a simple API!')  # Write welcome message
         else:
             # Handle other paths
             self.send_response(404)  # HTTP status code 404 (Not Found)
             self.end_headers()  # End headers
-            self.wfile.write(b'{"error": "Not found"}')  # Write error message
+            self.wfile.write(b'{"Endpoint not found"}')  # Write error message
 
 if __name__ == "__main__":
     # Create an HTTP server instance
