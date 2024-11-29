@@ -41,15 +41,17 @@ def show_user_profile(username):
 def add_user():
     """ Add a new user """
     if request.method == 'POST':
-        # create a new user
-        username = {"username": request.form['username'],
-                    "user": request.form['user'],
-                    "age": request.form['age'],
-                    "city": request.form['city']}
-        users = {username['username']: username}
-        return jsonify(username)
-    else:
-        return "Add a user"
+        try:
+            username = {
+                "username": request.form['username'],
+                "user": request.form['user'],
+                "age": request.form['age'],
+                "city": request.form['city']
+            }
+            users = {username['username']: username}
+            return jsonify(username), 201
+        except KeyError as e:
+            return jsonify({"error": f"Missing field: {str(e)}"}), 400
     
 
 if __name__ == "__main__":
