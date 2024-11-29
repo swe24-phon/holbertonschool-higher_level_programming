@@ -39,6 +39,7 @@ def show_user_profile(username):
 
 @app.route('/adduser', methods=['GET', 'POST'])
 def add_user():
+    """ Add a new user """
     if request.method == 'POST':
         # create a new user
         username = {"username": request.form['username'],
