@@ -36,14 +36,17 @@ def show_user_profile(username):
 def add_user():
     """ Add a new user """
     try:
-        username = request.json['username']
+        # Attempt to get the username from the incoming JSON request
+        username = request.json['username']  # This will raise KeyError if username is not present
         name = request.json['name']
         age = request.json['age']
         city = request.json['city']
         
+        # Check if the user already exists
         if username in users:
             return jsonify({"error": "User  already exists"}), 400
         
+        # Create a new user object
         user = {
             "username": username,
             "name": name,
@@ -54,6 +57,7 @@ def add_user():
         return jsonify({"message": "User  added", "user": user}), 201
     
     except KeyError as e:
+        # Handle the case where a required field is missing
         return jsonify({"error": f"{str(e).capitalize()} is required"}), 400
 
 if __name__ == "__main__":
