@@ -37,7 +37,7 @@ def show_user_profile(username):
     """ Show the profile for that user """
     return f'User {username}'
 
-@app.route('/adduser', methods=['GET', 'POST'])
+@app.route('/add_user', methods=['GET', 'POST'])
 def add_user():
     """ Add a new user """
     if request.method == 'POST':
