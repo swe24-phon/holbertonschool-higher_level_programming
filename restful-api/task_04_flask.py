@@ -5,6 +5,9 @@ from flask import jsonify, request
 
 app = Flask(__name__)
 
+# Initialize an empty users dictionary to store user data
+users = {}
+
 @app.route('/')
 def home():
     """ Home endpoint """
@@ -13,46 +16,45 @@ def home():
 @app.route('/data')
 def data():
     """ Data endpoint """
-    users = {
-        "jane": {"name": "Jane",
-                 "age": 28, "city": "Los Angeles"}}
-    return jsonify(users)
+    return jsonify(list(users.keys()))  # Return a list of usernames
 
 @app.route('/status')
 def status():
     """ Status endpoint """
     return "OK"
 
-@app.route('/info')
-def info():
-    """ Info endpoint """
-    info_data = {
-        "version": "1.0",
-        "description": "A simple API built with Flask"
-    }
-    return jsonify(info_data)
-
 @app.route('/users/<username>')
 def show_user_profile(username):
     """ Show the profile for that user """
-    return f'User {username}'
+    user = users.get(username)
+    if user:
+        return jsonify(user)
+    else:
+        return jsonify({"error": "User  not found"}), 404
 
-@app.route('/add_user', methods=['GET', 'POST'])
+@app.route('/add_user', methods=['POST'])
 def add_user():
     """ Add a new user """
-    if request.method == 'POST':
-        try:
-            username = {
-                "username": request.form['username'],
-                "user": request.form['user'],
-                "age": request.form['age'],
-                "city": request.form['city']
-            }
-            users = {username['username']: username}
-            return jsonify(username), 201
-        except KeyError as e:
-            return jsonify({"error": f"Missing field: {str(e)}"}), 400
+    try:
+        username = request.json['username']
+        name = request.json['name']
+        age = request.json['age']
+        city = request.json['city']
+        
+        if username in users:
+            return jsonify({"error": "User  already exists"}), 400
+        
+        user = {
+            "username": username,
+            "name": name,
+            "age": age,
+            "city": city
+        }
+        users[username] = user  # Add user to the users dictionary
+        return jsonify({"message": "User  added", "user": user}), 201
     
+    except KeyError as e:
+        return jsonify({"error": f"{str(e).capitalize()} is required"}), 400
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
