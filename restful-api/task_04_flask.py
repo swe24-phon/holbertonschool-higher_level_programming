@@ -38,14 +38,19 @@ def add_user():
         return jsonify({"error": "User already exists"}), 400
 
     # Add the new user
-    users[username] = {
+    user_data = {
+        "username": username,
         "name": data.get("name"),
         "age": data.get("age"),
         "city": data.get("city"),
     }
+    users[username] = user_data
 
-    # Return the added user information
-    return jsonify(users[username]), 201
+    # Return success message and user data
+    return jsonify({
+        "message": "User added successfully",
+        "user": user_data
+    }), 201
 
 @app.route("/users/<username>")
 def get_username(username):
