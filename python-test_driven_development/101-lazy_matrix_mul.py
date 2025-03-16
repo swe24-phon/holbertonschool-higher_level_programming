@@ -17,7 +17,9 @@ def lazy_matrix_mul(m_a, m_b):
         ValueError: if scalar operands are used
     """
     try:
-        result = np.matmul(m_a, m_b)
+        a = np.array(m_a, dtype=float)
+        b = np.array(m_b, dtype=float)
+        result = np.matmul(a, b)
         return str(result)
     except ValueError:
         raise ValueError("Scalar operands are not allowed, use '*' instead")
