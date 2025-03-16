@@ -25,6 +25,7 @@ def status():
 
 @app.route("/add_user", methods=["POST"])
 def add_user():
+    """ Add a new user to the system """
     data = request.get_json()
     
     # Check if username is present
@@ -54,11 +55,11 @@ def add_user():
 
 @app.route("/users/<username>")
 def get_username(username):
+    """ Retrieve user information by username """
     if username not in users:
         return jsonify({"error": "User not found"}), 404
 
     user_info = users[username]
-    user_info["username"] = username
 
     return jsonify(user_info)
 
