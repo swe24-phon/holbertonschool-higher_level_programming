@@ -49,19 +49,6 @@ def deserialize_from_xml(filename):
             key = child.tag
             value = child.text
 
-            # Attempt type conversion
-            if value is not None:
-                if value.isdigit():
-                    value = int(value)
-                else:
-                    try:
-                        value = float(value)
-                    except ValueError:
-                        if value.lower() == 'true':
-                            value = True
-                        elif value.lower() == 'false':
-                            value = False
-
             data[key] = value
 
         return data
