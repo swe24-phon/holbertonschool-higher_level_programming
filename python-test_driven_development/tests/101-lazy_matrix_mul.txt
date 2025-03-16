@@ -1,0 +1,50 @@
+"""
+Tests for 101-lazy_matrix_mul.py
+import 101-lazy_matrix_mul
+
+>>> 101_lazy_matrix_mul.lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22]]
+>>> 101_lazy_matrix_mul.lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+[[13, 16]]
+>>> 101_lazy_matrix_mul.lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6, 7]])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/work/holbertonschool-higher_level_programming/python-test_driven_development/101-lazy_matrix_mul.py", line 11, in lazy_matrix_mul
+    return np.matmul(m_a, m_b).tolist()
+ValueError: shapes (1,2) and (2,3) not aligned: 2 (dim 1) != 2 (dim 0)
+>>> 101_lazy_matrix_mul.lazy_matrix_mul([[1, 2]], [[]])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/work/holbertonschool-higher_level_programming/python-test_driven_development/101-lazy_matrix_mul.py", line 11, in lazy_matrix_mul
+    return np.matmul(m_a, m_b).tolist()
+ValueError: setting an array element with a sequence.
+>>> 101_lazy_matrix_mul.lazy_matrix_mul([[1, 2]], [[1, 2], [3, 4]])
+[[7, 10]]
+>>> 101_lazy_matrix_mul.lazy_matrix_mul([[1, 2, 3], [4, 5, 6]], [[7, 8], [9, 10], [11, 12]])
+[[58, 64], [139, 154]]
+>>> 101_lazy_matrix_mul.lazy_matrix_mul([[1, 2], [3, 4]], [[1, 2, 3], [4, 5, 6]])
+[[9, 12, 15], [19, 26, 33]]
+>>> 101_lazy_matrix_mul.lazy_matrix_mul([[1, 2]], [[3, 4]])
+[[11]]
+>>> 101_lazy_matrix_mul.lazy_matrix_mul([[]], [[3, 4]])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/work/holbertonschool-higher_level_programming/python-test_driven_development/101-lazy_matrix_mul.py", line 11, in lazy_matrix_mul
+    return np.matmul(m_a, m_b).tolist()
+ValueError: Expected 2D array, but got 1D array instead
+>>> 101_lazy_matrix_mul.lazy_matrix_mul([[1, 2]], [3, 4])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/work/holbertonschool-higher_level_programming/python-test_driven_development/101-lazy_matrix_mul.py", line 11, in lazy_matrix_mul
+    return np.matmul(m_a, m_b).tolist()
+ValueError: Expected 2D array, but got 1D array instead
+>>> 101_lazy_matrix_mul.lazy_matrix_mul([1, 2], [[3, 4]])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/work/holbertonschool-higher_level_programming/python-test_driven_development/101-lazy_matrix_mul.py", line 11, in lazy_matrix_mul
+    return np.matmul(m_a, m_b).tolist()
+  File "<__array_function__ internals>", line 5, in matmul
+ValueError: object too deep for desired array
+>>> 101_lazy_matrix_mul.lazy_matrix_mul([[1.5, 2.3]], [[3.4, 4.5]])
+[[17.77]]
+"""
