@@ -13,6 +13,11 @@ def lazy_matrix_mul(m_a, m_b):
 
     Returns:
         str: result of the multiplication
+    Raises:
+        ValueError: if scalar operands are used
     """
-
-    return str(np.matmul(m_a, m_b))
+    try:
+        result = np.matmul(m_a, m_b)
+        return str(result)
+    except ValueError:
+        raise ValueError("Scalar operands are not allowed, use '*' instead")
