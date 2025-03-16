@@ -34,48 +34,37 @@ def deserialize_from_xml(filename):
     filename (str): The name of the XML file to read.
     """
     if not os.path.exists(filename):
-        return False
+        return None
 
     with open(filename, 'r') as file:
         xml_content = file.read().strip()
 
         if not xml_content:
-            with open('data.json', 'w') as json_file:
-                json.dump([], json_file)
-            return True
+            return {}
     try:
         tree = ET.parse(filename)
         root = tree.getroot()
-        data = []
+        data = {}
         for child in root:
             key = child.tag
             value = child.text
 
-            if value.isdigit():
-                value = int(value)
-            elif '.' in value:
-                try:
-                    value = float(value)
-                except ValueError:
-                    pass
-            elif value.lower() == 'true':
-                value = True
-            elif value.lower() == 'false':
-                value = False
-                
-            else:
-                try:
-                    value = float(value)
-                except ValueError:
-                    pass  
-            data.append({key: value})
-  
-        json_output = json.dumps(data, indent=4)
+            # Attempt type conversion
+            if value is not None:
+                if value.isdigit():
+                    value = int(value)
+                else:
+                    try:
+                        value = float(value)
+                    except ValueError:
+                        if value.lower() == 'true':
+                            value = True
+                        elif value.lower() == 'false':
+                            value = False
 
-        with open("data.json", 'w') as file:
-            file.write(json_output)
-        return True
+            data[key] = value
+
+        return data
     except ET.ParseError:
         print("Error: The XML file is not well-formed.")
-        return False
-    
+        return None
