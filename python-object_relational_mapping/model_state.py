@@ -3,7 +3,6 @@
 
 from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.orm import relationship
-from model_city import City
 from base import Base
 import sys
 
