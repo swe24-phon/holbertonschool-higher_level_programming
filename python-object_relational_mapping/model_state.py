@@ -7,11 +7,14 @@ import sys
 
 Base = declarative_base()
 
+
 class State(Base):
     """Represents a state for a MySQL database"""
+    
     __tablename__ = 'states'
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     name = Column(String(128), nullable=False)
+
 
 if __name__ == "__main__":
     # Create an engine that connects to the MySQL server
@@ -21,7 +24,6 @@ if __name__ == "__main__":
         ),
         pool_pre_ping=True
     )
-    
+
     # Create all tables in the database
     Base.metadata.create_all(engine)
-    
