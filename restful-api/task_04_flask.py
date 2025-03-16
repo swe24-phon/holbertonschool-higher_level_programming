@@ -28,11 +28,15 @@ def add_user():
     """ Add a new user to the system """
     data = request.get_json()
     
-    # Check if username is present
+    # Check if username is present in the request data
     if not data or "username" not in data:
         return jsonify({"error": "Username is required"}), 400
-        
+
     username = data["username"]
+
+    # Log the current users and incoming username for debugging
+    print(f"Current users: {users}")
+    print(f"Incoming username: {username}")
 
     # Check if the user already exists
     if username in users:
@@ -52,6 +56,7 @@ def add_user():
         "message": "User added",
         "user": user_data
     }), 201
+
 
 @app.route("/users/<username>")
 def get_username(username):
