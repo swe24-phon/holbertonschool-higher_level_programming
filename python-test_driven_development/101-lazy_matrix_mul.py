@@ -12,7 +12,7 @@ def lazy_matrix_mul(m_a, m_b):
         m_b (list of lists): second matrix
 
     Returns:
-        list of lists: result of the multiplication
+        str: result of the multiplication
     """
 
-    return np.matmul(m_a, m_b).tolist()
+    return str(np.matmul(m_a, m_b))
