@@ -29,7 +29,7 @@ def add_user():
     
     # Check if username is present
     if not data or "username" not in data:
-        return jsonify({"error": "username is required"}), 400
+        return jsonify({"error": "Username is required"}), 400
         
     username = data["username"]
 
@@ -48,7 +48,7 @@ def add_user():
 
     # Return success message and user data
     return jsonify({
-        "message": "User added successfully",
+        "message": "User added",
         "user": user_data
     }), 201
 
