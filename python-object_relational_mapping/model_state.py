@@ -2,11 +2,10 @@
 """Defines the State class and creates the states table"""
 
 from sqlalchemy import Column, Integer, String, create_engine
-from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy.orm import relationship
 from model_city import City
+from base import Base
 import sys
-
-Base = declarative_base()
 
 
 class State(Base):

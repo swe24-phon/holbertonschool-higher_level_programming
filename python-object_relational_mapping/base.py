@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Base class for SQLAlchemy models"""
+"""Defines the Base class for SQLAlchemy models"""
+
 
 from sqlalchemy.ext.declarative import declarative_base
 
