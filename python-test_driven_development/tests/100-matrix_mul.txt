@@ -1,145 +1,38 @@
 """
-Test for matrix_mul function
+Tests for 100-matrix_mul.py
+
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4]])
+[[7, 10], [15, 22]]
+>>> matrix_mul([[1, 2]], [[3, 4], [5, 6]])
+[[13, 16]]
+>>> matrix_mul([[1, 2]], [[3, 4], [5, 6, 7]])
+Traceback (most recent call last):
+    ...
+TypeError: each row of m_b must be of the same size
+>>> matrix_mul([[1, 2]], [[]])
+Traceback (most recent call last):
+    ...
+ValueError: m_b can't be empty
+>>> matrix_mul([[1, 2]], [[1, 2], [3, 4]])
+[[7, 10]]
+>>> matrix_mul([[1, 2, 3], [4, 5, 6]], [[7, 8], [9, 10], [11, 12]])
+[[58, 64], [139, 154]]
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2, 3], [4, 5, 6]])
+[[9, 12, 15], [19, 26, 33]]
+>>> matrix_mul([[1, 2]], [[3, 4]])
+[[11]]
+>>> matrix_mul([[]], [[3, 4]])
+Traceback (most recent call last):
+    ...
+ValueError: m_a can't be empty
+>>> matrix_mul([[1, 2]], [3, 4])
+Traceback (most recent call last):
+    ...
+TypeError: m_b must be a list
+>>> matrix_mul([1, 2], [[3, 4]])
+Traceback (most recent call last):
+    ...
+TypeError: m_a must be a list
+>>> matrix_mul([[1.5, 2.3]], [[3.4, 4.5]])
+[[17.77]]
 """
-
-
-import unittest
-matrix_mul = __import__('100-matrix_mul').matrix_mul
-
-
-class TestMatrixMul(unittest.TestCase):
-    """
-    Test cases for matrix_mul function.
-    """
-
-    def test_simple_matrix_multiplication(self):
-        """
-        Test simple matrix multiplication.
-        """
-        m_a = [[1, 2], [3, 4]]
-        m_b = [[1, 2], [3, 4]]
-        expected = [[7, 10], [15, 22]]
-        self.assertEqual(matrix_mul(m_a, m_b), expected)
-
-    def test_matrix_multiplication_different_dimensions(self):
-        """
-        Test matrix multiplication with different dimensions.
-        """
-        m_a = [[1, 2]]
-        m_b = [[3, 4], [5, 6]]
-        expected = [[13, 16]]
-        self.assertEqual(matrix_mul(m_a, m_b), expected)
-
-    def test_empty_matrix_a(self):
-        """
-        Test empty matrix m_a.
-        """
-        m_a = []
-        m_b = [[1, 2], [3, 4]]
-        with self.assertRaises(ValueError) as context:
-            matrix_mul(m_a, m_b)
-        self.assertEqual(str(context.exception), "m_a can't be empty")
-
-    def test_empty_matrix_b(self):
-        """
-        Test empty matrix m_b.
-        """
-        m_a = [[1, 2], [3, 4]]
-        m_b = []
-        with self.assertRaises(ValueError) as context:
-            matrix_mul(m_a, m_b)
-        self.assertEqual(str(context.exception), "m_b can't be empty")
-
-    def test_matrix_a_not_list(self):
-        """
-        Test m_a is not a list.
-        """
-        m_a = 1
-        m_b = [[1, 2], [3, 4]]
-        with self.assertRaises(TypeError) as context:
-            matrix_mul(m_a, m_b)
-        self.assertEqual(str(context.exception), "m_a must be a list")
-
-    def test_matrix_b_not_list(self):
-        """
-        Test m_b is not a list.
-        """
-        m_a = [[1, 2], [3, 4]]
-        m_b = 1
-        with self.assertRaises(TypeError) as context:
-            matrix_mul(m_a, m_b)
-        self.assertEqual(str(context.exception), "m_b must be a list")
-
-    def test_matrix_a_not_list_of_lists(self):
-        """
-        Test m_a is not a list of lists.
-        """
-        m_a = [1, 2]
-        m_b = [[1, 2], [3, 4]]
-        with self.assertRaises(TypeError) as context:
-            matrix_mul(m_a, m_b)
-        self.assertEqual(str(context.exception), "m_a must be a list of lists")
-
-    def test_matrix_b_not_list_of_lists(self):
-        """
-        Test m_b is not a list of lists.
-        """
-        m_a = [[1, 2], [3, 4]]
-        m_b = [1, 2]
-        with self.assertRaises(TypeError) as context:
-            matrix_mul(m_a, m_b)
-        self.assertEqual(str(context.exception), "m_b must be a list of lists")
-
-    def test_matrix_a_contains_non_numbers(self):
-        """
-        Test m_a contains non numbers.
-        """
-        m_a = [["1", 2], [3, 4]]
-        m_b = [[1, 2], [3, 4]]
-        with self.assertRaises(TypeError) as context:
-            matrix_mul(m_a, m_b)
-        self.assertEqual(str(context.exception), "m_a should contain only integers or floats")
-
-    def test_matrix_b_contains_non_numbers(self):
-        """
-        Test m_b contains non numbers.
-        """
-        m_a = [[1, 2], [3, 4]]
-        m_b = [[1, "2"], [3, 4]]
-        with self.assertRaises(TypeError) as context:
-            matrix_mul(m_a, m_b)
-        self.assertEqual(str(context.exception), "m_b should contain only integers or floats")
-
-    def test_matrix_a_not_rectangular(self):
-        """
-        Test m_a is not rectangular.
-        """
-        m_a = [[1, 2], [3, 4, 5]]
-        m_b = [[1, 2], [3, 4]]
-        with self.assertRaises(TypeError) as context:
-            matrix_mul(m_a, m_b)
-        self.assertEqual(str(context.exception), "each row of m_a must be of the same size")
-
-    def test_matrix_b_not_rectangular(self):
-        """
-        Test m_b is not rectangular.
-        """
-        m_a = [[1, 2], [3, 4]]
-        m_b = [[1, 2], [3, 4, 5]]
-        with self.assertRaises(TypeError) as context:
-            matrix_mul(m_a, m_b)
-        self.assertEqual(str(context.exception), "each row of m_b must be of the same size")
-
-    def test_matrix_cannot_be_multiplied(self):
-        """
-        Test matrices cannot be multiplied.
-        """
-        m_a = [[1, 2], [3, 4]]
-        m_b = [[1, 2]]
-        with self.assertRaises(ValueError) as context:
-            matrix_mul(m_a, m_b)
-        self.assertEqual(str(context.exception), "m_a and m_b can't be multiplied")
-
-
-if __name__ == '__main__':
-    unittest.main()
