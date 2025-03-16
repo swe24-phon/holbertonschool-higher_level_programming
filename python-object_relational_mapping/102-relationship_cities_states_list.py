@@ -10,8 +10,7 @@ import sys
 if __name__ == "__main__":
     # Check if the number of arguments is correct
     if len(sys.argv) != 4:
-        print("Usage: {} <mysql username> <mysql password> <database name>"
-              .format(sys.argv[0]))
+        print("Usage: {} <mysql username> <mysql password> <database name>".format(sys.argv[0]))
         sys.exit(1)
 
     # Get the arguments
@@ -20,9 +19,7 @@ if __name__ == "__main__":
     database_name = sys.argv[3]
 
     # Create the engine
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format
-                           (mysql_username, mysql_password, database_name)
-                           , pool_pre_ping=True)
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(mysql_username, mysql_password, database_name), pool_pre_ping=True)
 
     # Create all tables in the database
     Base.metadata.create_all(engine)
