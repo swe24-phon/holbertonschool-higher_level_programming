@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""Script that prints all City objects from the database"""
+"""
+Prints all City objects from the database hbtn_0e_14_usa.
+"""
+
 import sys
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -8,27 +11,32 @@ from model_city import City
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: {} username password database".format(sys.argv[0]))
-        sys.exit(1)
+    # Check if the script is being run directly
+    if __name__ == "__main__":
+        # Get MySQL credentials and database name from command line arguments
+        mysql_username = sys.argv[1]
+        mysql_password = sys.argv[2]
+        database_name = sys.argv[3]
 
-    username, password, dbname = sys.argv[1], sys.argv[2], sys.argv[3]
-    
-    # Create engine and session
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
-        username, password, dbname
-    ))
-    
-    Session = sessionmaker(bind=engine)
-    session = Session()
+        # Create engine
+        engine = create_engine(
+            'mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+                mysql_username, mysql_password, database_name),
+            pool_pre_ping=True
+        )
 
-    # Query cities joined with states
-    results = session.query(City, State)\
-        .filter(City.state_id == State.id)\
-        .order_by(City.id).all()
+        # Create a session
+        Session = sessionmaker(bind=engine)
+        session = Session()
 
-    # Print results
-    for city, state in results:
-        print("{}: ({}) {}".format(state.name, city.id, city.name))
+        # Fetch all City objects and sort by cities.id
+        cities = session.query(City).order_by(City.id).all()
 
-    session.close()
+        # Print the City objects in the specified format
+        for city in cities:
+            state_name = session.query(State.name).filter(
+                State.id == city.state_id).scalar()
+            print("{}: ({}) {}".format(state_name, city.id, city.name))
+
+        # Close the session
+        session.close()
