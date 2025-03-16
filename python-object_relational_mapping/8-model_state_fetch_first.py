@@ -1,8 +1,11 @@
 #!/usr/bin/python3
+""" Module that lists the first State object from
+the database hbtn_0e_6_usa """
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from model_state import Base, State
 import sys
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
