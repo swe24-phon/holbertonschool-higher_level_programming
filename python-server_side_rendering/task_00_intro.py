@@ -1,7 +1,7 @@
 import os
 
 
-def generate_invitations(template, attendees, output_dir="invitations"):
+def generate_invitations(template, attendees):
     """
     Generates personalized invitation files from a template and a list
     of attendees.
@@ -10,9 +10,9 @@ def generate_invitations(template, attendees, output_dir="invitations"):
         template (str): The template string with placeholders.
         attendees (list): A list of dictionaries, where each dictionary
             represents an attendee.
-        output_dir (str, optional): The directory where the generated
-            invitation files will be saved. Defaults to "invitations".
+        
     """
+    output_dir = "."
 
     # Check input types
     if not isinstance(template, str):
@@ -33,8 +33,8 @@ def generate_invitations(template, attendees, output_dir="invitations"):
         print("No data provided, no output files generated.")
         return
 
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
+    #if not os.path.exists(output_dir):
+    #    os.makedirs(output_dir)
 
     for i, attendee in enumerate(attendees):
         try:
@@ -43,7 +43,7 @@ def generate_invitations(template, attendees, output_dir="invitations"):
                              ["name", "event_title", "event_date",
                               "event_location"]}
             personalized_content = template.format(**attendee_data)
-            output_file_path = os.path.join(output_dir, f"output_{i+1}.txt")
+            output_file_path = f"output_{i+1}.txt"
             with open(output_file_path, "w") as f:
                 f.write(personalized_content)
             print(f"Generated invitation for {attendee_data.get('name', 'Guest')} at {output_file_path}")
