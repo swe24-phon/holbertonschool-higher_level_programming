@@ -46,9 +46,8 @@ def generate_invitations(template, attendees, output_dir="invitations"):
             output_file_path = os.path.join(output_dir, f"output_{i+1}.txt")
             with open(output_file_path, "w") as f:
                 f.write(personalized_content)
-            print(f"Generated invitation for "
-                  f"{attendee_data.get('name', 'Guest')} at "
-                  f"{output_file_path}")
+            print(f"Generated invitation for {attendee_data.get('name', 'Guest')} at {output_file_path}")
+            print(f"Wrote invitation to: {output_file_path}")
         except Exception as e:
             print(f"Error: Could not generate invitation for attendee "
                   f"{i+1}: {e}")
@@ -73,4 +72,4 @@ Event Team""" + "\n"
         {"name": "David", "event_title": "Conference"},
     ]
 
-    generate_invitations(template, attendees) + "\n\n"
+    generate_invitations(template, attendees)
