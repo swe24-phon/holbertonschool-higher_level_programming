@@ -30,7 +30,7 @@ def list_items():
     return render_template('items.html', items=items_data)
 
 
-@app.route('/product')
+@app.route('/products')
 def product():
     source = request.args.get('source')
     product_id = request.args.get('id')
