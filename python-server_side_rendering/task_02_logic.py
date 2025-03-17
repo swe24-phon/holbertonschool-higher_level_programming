@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import json
 """ using flask with jinja template engine """
 
 
@@ -16,5 +17,12 @@ def about():
 def contact():
     return render_template('contact.html')
 
+@app.route('/items')
+def items():
+    with open('items.json', 'r') as f:
+        data = json.load(f)
+    items_list = data['items']
+    return render_template('items.html', items=items_list)
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5010)
+    app.run(debug=True, port=5000)
