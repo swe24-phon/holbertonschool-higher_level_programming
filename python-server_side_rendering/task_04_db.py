@@ -42,8 +42,8 @@ def product():
                 products = json.load(f)
         except FileNotFoundError:
             return render_template('product_display.html', error="JSON file not found")
-        except json.JSONDecodeError:
-            return render_template('product_display.html', error="Invalid JSON format")
+        except json.JSONDecodeError as e:
+            return render_template('product_display.html', error=f"Invalid JSON format: {str(e)}")
     elif source == 'csv':
         try:
             with open('products.csv', 'r') as f:
