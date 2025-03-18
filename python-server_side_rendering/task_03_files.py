@@ -55,6 +55,9 @@ def product():
     else:
         return render_template('product_display.html', error="Wrong source")
 
+    if not products and source:
+        return render_template('product_display.html', error="Product not found")
+
     if product_id:
         try:
             product_id = int(product_id)
@@ -65,6 +68,8 @@ def product():
                 return render_template('product_display.html', error="Product not found")
         except ValueError:
             return render_template('product_display.html', error="Invalid product ID")
+    elif product_id:
+        return render_template('product_display.html', error="Product not found")
     else:
         return render_template('product_display.html', products=products)
 
